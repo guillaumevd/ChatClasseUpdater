@@ -32,7 +32,7 @@ customtkinter.set_default_color_theme("blue")
 window = customtkinter.CTk()
 window.iconbitmap('app/assets/icon.ico')
 window.title("Chat 4T")
-window.geometry("640x540")
+window.geometry("1280x720")
 
 label_username = customtkinter.CTkLabel(master=window, text="Pseudo :")
 label_username.place(relx=0.2, rely=0.1, anchor=tkinter.CENTER)
