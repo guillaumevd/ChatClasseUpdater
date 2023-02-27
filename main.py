@@ -1,1 +1,1 @@
-print('Updated')
+input('Updated')
