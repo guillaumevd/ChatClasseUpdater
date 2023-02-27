@@ -30,7 +30,7 @@ customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
 
 window = customtkinter.CTk()
-window.iconbitmap('assets/icon.ico')
+window.iconbitmap('app/assets/icon.ico')
 window.title("Chat 4T")
 window.geometry("640x540")
 
