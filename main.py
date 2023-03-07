@@ -51,6 +51,7 @@ label_message.place(relx=0.5, rely=0.8, anchor=tkinter.CENTER)
 
 entry_message = customtkinter.CTkEntry(master=window)
 entry_message.place(relx=0.5, rely=0.8, anchor=tkinter.CENTER)
+entry_message.bind("<Return>", lambda event: send_message())
 
 button_send = customtkinter.CTkButton(master=window, command=send_message, text='envoyer')
 button_send.place(relx=0.5, rely=0.9, anchor=tkinter.CENTER)
