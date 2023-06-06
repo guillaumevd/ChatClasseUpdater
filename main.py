@@ -1,8 +1,30 @@
 import tkinter as tk
+from PIL import Image
 import tkinter
 import socket
 import threading
 import customtkinter
+import requests
+import shutil
+
+
+def showimg(img_url):
+    response = requests.get(img_url, stream=True)
+    with open('img.png', 'wb') as file:
+        shutil.copyfileobj(response.raw, file)
+    del response
+
+    img = Image.open('img.png')
+    img.show()
+
+
+def is_url_image(string):
+    filetypes = ["jpg", "png", "jpeg", "gif"]
+    for filetype in filetypes:
+        print(filetype)
+        if filetype in string:
+            return True
+    return False
 
 
 def send_message():
@@ -16,14 +38,12 @@ def send_message():
 
 def receive_message():
     while True:
-        try:
-            data = client_socket.recv(1024).decode("utf-8")
-            if not data:
-                break
-            text_messages.insert(tk.END, data + "\n")
-        except:
-            text_messages.insert(tk.END, "Le serveur a été déconnecté.\n")
-            break
+        data = client_socket.recv(1024).decode("utf-8")
+        string = data.split(" : ")
+        if len(string) > 1:
+            if is_url_image(string[1]):
+                showimg(string[1])
+        text_messages.insert(tk.END, data + "\n")
 
 
 customtkinter.set_appearance_mode("dark")
